@@ -8,56 +8,56 @@
 
 function usage() {
 echo -e "Usage:\n"
-echo -e "\t$(basename $0) ANNOTATION_FILE\n"
+echo -e "\t$(basename "$0") ANNOTATION_FILE\n"
 }
 
 function parseXML() {
-cat ${ANN} |xmlstarlet sel -t -m 'document/annotations/annotation' -v 'TEXT' -o ',' -m 'segment/movingRegion/rectRegion' -v '@t' -o ',' -b -n
+cat "${ANN}" |xmlstarlet sel -t -m 'document/annotations/annotation' -v 'TEXT' -o ',' -m 'segment/movingRegion/rectRegion' -v '@t' -o ',' -b -n
 }
 
 function reformatTime() {
-local H=$(echo $1 |cut -d ':' -f 1)
-local M=$(echo $1 |cut -d ':' -f 2)
-local S=$(echo $1 |cut -d ':' -f 3)
+local H=$(echo "$1" |cut -d ':' -f 1)
+local M=$(echo "$1" |cut -d ':' -f 2)
+local S=$(echo "$1" |cut -d ':' -f 3)
 printf '%02d:%02d:%06.3f' ${H} ${M} ${S} |tr '.' ','
 }
 
 function time2sod() {
 # Convert time in HH:MM:SS.SSS format into second-of-the-day value
-local SOD=$(echo $1 | awk -F ":" '{printf("%f\n", $1*3600+$2*60+$3);}')
+local SOD=$(echo "$1" | awk -F ":" '{printf("%f\n", "$1"*3600+$2*60+$3);}')
 
 echo ${SOD}
 }
 
-ANN=$1
-SRT=$(basename ${ANN} .xml).srt
+ANN="$1"
+SRT="$(basename "${ANN}" .xml).srt"
 IFS=$'\n'
 I=0
 
 [ "x${ANN}" = "x" ] && { usage; exit 1; }
-[ -f ${ANN} ] || { usage; exit 1; }
-[ -f ${SRT} ] && rm ${SRT}
-[ -f ${SRT}.tmp ] && rm ${SRT}.tmp
+[ -f "${ANN}" ] || { usage; exit 1; }
+[ -f "${SRT}" ] && rm "${SRT}"
+[ -f "${SRT}".tmp ] && rm "${SRT}".tmp
 
 for LINE in $(parseXML); do
 C=$(echo ${LINE} |cut -d ',' -f 1)
 B=$(echo ${LINE} |cut -d ',' -f 2)
 E=$(echo ${LINE} |cut -d ',' -f 3)
-echo "$(time2sod ${B})#${B}#${E}#${C}" >> ${SRT}.tmp
+echo "$(time2sod ${B})#${B}#${E}#${C}" >> "${SRT}".tmp
 done
 
-grep "###" ${SRT}.tmp && {
+grep "###" "${SRT}".tmp && {
 echo "\"${ANN}\" has no valid annotation!"
-rm ${SRT}.tmp
+rm "${SRT}".tmp
 exit 1
 }
 
-for LINE in $(cat ${SRT}.tmp|sort -n -t '#'); do
+for LINE in $(cat "${SRT}".tmp|sort -n -t '#'); do
 (( I++ ))
 C=$(echo ${LINE} |cut -d '#' -f 4)
 B=$(reformatTime $(echo ${LINE} |cut -d '#' -f 2))
 E=$(reformatTime $(echo ${LINE} |cut -d '#' -f 3))
-echo -e "${I}\n${B} --> ${E}\n${C}\n" >> ${SRT}
+echo -e "${I}\n${B} --> ${E}\n${C}\n" >> "${SRT}"
 done
 
-rm ${SRT}.tmp
+rm "${SRT}".tmp
