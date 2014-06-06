@@ -23,7 +23,7 @@ Convert the youtube annotation into SRT subtitle
 ann2srt ANNOTATION_FILE
 
 ## License
-GPL v3
+GPL v3, inherited from original work.
 
 ## Changelog upto v0.2 (see future changes at this repo's [commit history](https://github.com/Vdragon/ann2srt/commits/master)) 
 * v0.2 (Jan/19/2011):
