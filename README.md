@@ -11,6 +11,7 @@ Convert the youtube annotation into SRT subtitle
 * GNU bash
 * coreutils
 * xmlstarlet
+* awk/gawk
 
 ## Usage
 ann2srt ANNOTATION_FILE
