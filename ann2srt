@@ -2,14 +2,9 @@
 #
 # Convert the youtube annotation into SRT subtitle
 #
-# By Shang-Feng Yang <storm_DOT_sfyang_AT_gmail_DOT_com>
-# Version: 0.2
+# By Shang-Feng Yang <storm_DOT_sfyang_AT_gmail_DOT_com> © 2011
 # License: GPL v3
 #
-# Changelog:
-# * v0.2 (Jan/19/2011):
-# - Sort the annotations using the "begin" time as key
-# - Minor bugs fixing
 
 function usage() {
 echo -e "Usage:\n"
