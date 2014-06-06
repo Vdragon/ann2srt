@@ -29,3 +29,6 @@ GPL v3, inherited from original work.
 * v0.2 (Jan/19/2011):
 	- Sort the annotations using the "begin" time as key
 	- Minor bugs fixing
+	
+## Todo
+* merge v0.3 original script
