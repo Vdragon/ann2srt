@@ -2,7 +2,7 @@
 Convert the youtube annotation into SRT subtitle
 
 ## Original from
-[S.-F. Yang's Blog in English: Converting Youtube's annotation into SRT subtitle](http://sfyang-en.blogspot.tw/2010/12/converting-youtubes-annotation-into-srt.html)
+[S.-F. Yang's Blog in English: ann2srt v0.2](http://sfyang-en.blogspot.tw/2011/01/ann2srt-v02.html)
 
 ## Author
 [Shang-Feng Yang](mailto:storm.sfyang@gmail.com)
