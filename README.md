@@ -27,10 +27,16 @@ ann2srt ANNOTATION_FILE
 ## License
 GPL v3, inherited from original work.
 
-## Changelog upto v0.2 (see future changes at this repo's [commit history](https://github.com/Vdragon/ann2srt/commits/master)) 
+## Changelog and release notices upto v0.3.1 (see future changes at this repo's [commit history](https://github.com/Vdragon/ann2srt/commits/master)) 
+* v0.3 (Oct/19/2011):
+	- Fix the parsing errors caused by comma and newline characters in some English annotations
+	- Adding transparent dos2unix conversion for compatibility under Cygwin
+	- Thanks to the commenter L who helped me on testing and debugging the script on Cygwin, version 0.3 of ann2srt now can handle the annotations other than Traditional Chinese language that have newlines and commas in them, and also can run correctly under Cygwin environment on Win32 platform.
 * v0.2 (Jan/19/2011):
 	- Sort the annotations using the "begin" time as key
 	- Minor bugs fixing
+* v0.1 (Dec/7/2010):
+	- Initial release
 	
 ## Todo
 * merge v0.3 original script
