@@ -16,10 +16,10 @@ Convert the youtube annotation into SRT subtitle
 	* Add additional improvement to the script
 
 ## Software dependencies
-* GNU bash
-* coreutils
-* xmlstarlet
-* awk/gawk
+* [GNU bash](http://www.gnu.org/software/bash/)
+* [GNU core utilities(coreutils)](http://www.gnu.org/s/coreutils/)
+* [XMLStarlet Command Line XML Toolkit(xmlstarlet)](http://xmlstar.sourceforge.net/)
+* awk/[Gawk](http://www.gnu.org/software/gawk/)
 
 ## How to install
 Just add `Executable/` directory into the list of your executable search path(append and assigned it to  your PATH environment variable setting in shell's runcommands).  The runcommands needed to be source'd again by the shell to take effect.
