@@ -23,7 +23,7 @@ ann2srt ANNOTATION_FILE
 ## License
 GPL v3
 
-## Changelog upto v0.2
+## Changelog upto v0.2 (see future changes at this repo's [commit history](https://github.com/Vdragon/ann2srt/commits/master)) 
 * v0.2 (Jan/19/2011):
 	- Sort the annotations using the "begin" time as key
 	- Minor bugs fixing
