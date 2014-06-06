@@ -4,8 +4,12 @@ Convert the youtube annotation into SRT subtitle
 ## Original from
 [S.-F. Yang's Blog in English: ann2srt v0.2](http://sfyang-en.blogspot.tw/2011/01/ann2srt-v02.html)
 
-## Author
-[Shang-Feng Yang](mailto:storm.sfyang@gmail.com)
+## Authors
+* [Shang-Feng Yang](mailto:storm.sfyang@gmail.com)
+	* Original script author(please don't bother him with repo-specific questions)
+* [Ｖ字龍(Vdragon)](mailto:Vdragon.Taiwan@gmail.com)
+	* This Git repository's current maintainer
+	* Add additional improvement to the script
 
 ## Software dependencies
 * GNU bash
