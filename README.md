@@ -21,6 +21,9 @@ Convert the youtube annotation into SRT subtitle
 * xmlstarlet
 * awk/gawk
 
+## How to install
+Just add `Executable/` directory into the list of your executable search path(append and assigned it to  your PATH environment variable setting in shell's runcommands).  The runcommands needed to be source'd again by the shell to take effect.
+
 ## Usage
 ann2srt ANNOTATION_FILE
 
