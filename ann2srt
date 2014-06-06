@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Convert the youtube annotation into SRT subtitle
+# 
+# By Shang-Feng Yang <storm_dot_sfyang_at_gmail_dot_com>
+# Version: 0.1
+# License: GPL v3
+# Copied from http://sfyang-en.blogspot.tw/2010/12/converting-youtubes-annotation-into-srt.html
+
+function usage() {
+echo -e "Usage:\n"
+echo -e "\t$(basename $0) ANNOTATION_FILE\n"
+}
+
+function parseXML() {
+cat ${ANN} |xmlstarlet sel -t -m 'document/annotations/annotation' -v 'TEXT' -o ',' -m 'segment/movingRegion/rectRegion' -v '@t' -o ',' -b -n
+}
+
+function reformatTime() {
+H=$(echo $1 |cut -d ':' -f 1)
+M=$(echo $1 |cut -d ':' -f 2)
+S=$(echo $1 |cut -d ':' -f 3)
+printf '%02d:%02d:%02.3f' ${H} ${M} ${S} |tr '.' ','
+}
+
+ANN=$1
+SRT=$(basename ${ANN} .xml).srt
+IFS=$'\n'
+I=0
+
+[ -f ${ANN} ] || { usage; exit 1; }
+[ -f ${SRT} ] && rm ${SRT}
+
+for LINE in $(parseXML); do
+(( I++ ))
+C=$(echo ${LINE} |cut -d ',' -f 1)
+B=$(echo ${LINE} |cut -d ',' -f 2)
+E=$(echo ${LINE} |cut -d ',' -f 3)
+echo -e "${I}\n$(reformatTime ${B}) --> $(reformatTime ${E})\n${C}\n" >> ${SRT}
+done
