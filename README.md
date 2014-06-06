@@ -39,4 +39,4 @@ GPL v3, inherited from original work.
 	- Initial release
 	
 ## Todo
-* merge v0.3 original script
+* 
